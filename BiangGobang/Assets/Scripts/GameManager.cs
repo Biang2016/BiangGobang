@@ -3,14 +3,9 @@ using System.Collections;
 using System;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour {
-    public static GameManager gm;
+public class GameManager : MonoSingletion<GameManager> {
 
     void Awake() {
-        if (gm == null) {
-            gm = this.gameObject.GetComponent<GameManager>();
-        }
-
     }
 
     void Start() {
@@ -38,7 +33,7 @@ public class GameManager : MonoBehaviour {
         Pause
     }
 
-    private GameStates GameState = GameStates.BeforeStart;
+    public GameStates GameState = GameStates.BeforeStart;
 
     private void initializeGameStatesCanvas() {
         GameStartCanvas.SetActive(true);
