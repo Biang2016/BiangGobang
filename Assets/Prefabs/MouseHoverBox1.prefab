@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4037077905694648}
   - component: {fileID: 212999131238500998}
   - component: {fileID: 114352875030255692}
-  - component: {fileID: 114180611602829734}
+  - component: {fileID: 114689213688160014}
   m_Layer: 0
-  m_Name: Chess2
+  m_Name: MouseHoverBox1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,23 +37,11 @@ Transform:
   m_GameObject: {fileID: 1515988313590648}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114180611602829734
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1515988313590648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e873052b95b004158a232eccbee05c28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Pos: 
 --- !u!114 &114352875030255692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -65,8 +53,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b6892e8f4154f95a13a9e263fc19ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainColor: {r: 1, g: 0.4050671, b: 0.3443396, a: 1}
+  MainColor: {r: 0.23921569, g: 0.87058824, b: 1, a: 1}
   Change: 0
+--- !u!114 &114689213688160014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1515988313590648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f76df4916e08047519cd6169ae7f26f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212999131238500998
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -101,9 +100,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 457335d9ec8d84e488e9e553e4074071, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 3
+  m_Sprite: {fileID: 21300000, guid: b9d18ffe3740e44f1b12235ee3df6649, type: 3}
+  m_Color: {r: 0.23921569, g: 0.87058824, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

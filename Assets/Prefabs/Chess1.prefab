@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b6892e8f4154f95a13a9e263fc19ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainColor: {r: 0, g: 0.7398894, b: 1, a: 1}
+  MainColor: {r: 0.24056602, g: 0.87193835, b: 1, a: 1}
   Change: 0
 --- !u!114 &114770490043715262
 MonoBehaviour:
@@ -103,7 +103,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 457335d9ec8d84e488e9e553e4074071, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.23921569, g: 0.87058824, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

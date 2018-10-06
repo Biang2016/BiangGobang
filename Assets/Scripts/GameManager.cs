@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.Experimental.UIElements;
 using UnityEngine.UI;
 
 public class GameManager : MonoSingletion<GameManager>
@@ -23,15 +24,21 @@ public class GameManager : MonoSingletion<GameManager>
         {
             if (GameState == GameStates.Playing)
                 Pause();
+            else if(GameState == GameStates.Pause)
+                Resume();
         }
     }
 
     #region GameStates And Canvas
 
     public GameObject GameOverCanvas;
+    public Text GameOverText;
     public GameObject GameStartCanvas;
     public GameObject GamePauseCanvas;
-    public GameObject GamePlay;
+    public GameObject PlayerA;
+    public GameObject PlayerB;
+    public Color PlayerAColor;
+    public Color PlayerBColor;
 
     public enum GameStates
     {
@@ -50,11 +57,19 @@ public class GameManager : MonoSingletion<GameManager>
         GamePauseCanvas.SetActive(false);
     }
 
-    public void GameOver()
+    public void GameOver(bool PlayerAWin)
     {
         GameState = GameStates.GameOver;
         GameOverCanvas.SetActive(true);
         Time.timeScale = 0;
+        if (PlayerAWin)
+        {
+            GameOverText.text = "Player A Wins!";
+        }
+        else
+        {
+            GameOverText.text = "Player B Wins!";
+        }
     }
 
     public void NewGame()
@@ -62,6 +77,8 @@ public class GameManager : MonoSingletion<GameManager>
         GameState = GameStates.Playing;
         Time.timeScale = 1f;
         GameStartCanvas.SetActive(false);
+        PlayerA.SetActive(true);
+        PlayerB.SetActive(false);
     }
 
     public void ClearGame()
@@ -80,12 +97,14 @@ public class GameManager : MonoSingletion<GameManager>
 
     private void Pause()
     {
+        GameState = GameStates.Pause;
         Time.timeScale = 0;
         GamePauseCanvas.SetActive(true);
     }
 
     public void Resume()
     {
+        GameState = GameStates.Playing;
         Time.timeScale = 1f;
         GamePauseCanvas.SetActive(false);
     }
