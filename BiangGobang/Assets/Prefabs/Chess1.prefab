@@ -53,8 +53,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b6892e8f4154f95a13a9e263fc19ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainColor: {r: 0.45870662, g: 1, b: 0, a: 1}
-  Change: 0.3
+  MainColor: {r: 0, g: 0.7398894, b: 1, a: 1}
+  Change: 0
 --- !u!114 &114770490043715262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -66,6 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e873052b95b004158a232eccbee05c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pos: 
 --- !u!212 &212109680510201462
 SpriteRenderer:
   m_ObjectHideFlags: 1
