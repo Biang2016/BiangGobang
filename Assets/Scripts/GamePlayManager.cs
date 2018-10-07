@@ -19,6 +19,7 @@ public class GamePlayManager : MonoSingletion<GamePlayManager>
 
     void Update()
     {
+        UpdateMouseDown();
         UpdatePutChess();
         UpdateMouseHover();
     }
@@ -52,11 +53,29 @@ public class GamePlayManager : MonoSingletion<GamePlayManager>
         }
     }
 
+    private void UpdateMouseDown()
+    {
+        if (GameManager.Instance.GameState == GameManager.GameStates.Playing)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                mouseLeftDown = true;
+            }
+            if (Input.GetMouseButtonDown(1))
+            {
+                mouseRightDown = true;
+            }
+        }
+    }
+
+    bool mouseLeftDown = false;
+    bool mouseRightDown = false;
+
     private void UpdatePutChess()
     {
         if (GameManager.Instance.GameState == GameManager.GameStates.Playing)
         {
-            if (Input.GetMouseButtonUp(0))
+            if (mouseLeftDown && Input.GetMouseButtonUp(0))
             {
                 int[] pos = getClickPosition();
                 if (pos == null) return;
@@ -68,9 +87,10 @@ public class GamePlayManager : MonoSingletion<GamePlayManager>
                         RemoveForbid(pos[0], pos[1]);
                     }
                 }
+                mouseLeftDown = false;
             }
 
-            if (Input.GetMouseButtonUp(1))
+            if (mouseRightDown && Input.GetMouseButtonUp(1))
             {
                 int[] pos = getClickPosition();
                 if (pos == null) return;
@@ -85,6 +105,7 @@ public class GamePlayManager : MonoSingletion<GamePlayManager>
                         RemoveForbid(pos[0], pos[1]);
                     }
                 }
+                mouseRightDown = false;
             }
         }
     }
@@ -102,7 +123,7 @@ public class GamePlayManager : MonoSingletion<GamePlayManager>
                 return null;
             }
 
-            return new int[] {x + 3, y + 3};
+            return new int[] { x + 3, y + 3 };
         }
 
         return null;
@@ -115,7 +136,9 @@ public class GamePlayManager : MonoSingletion<GamePlayManager>
         chessArr[posX, posY] = chess;
 
         chess.transform.position = new Vector3((posX - 3) * 1.5f, (posY - 3) * 1.5f, -0.5f);
-        chess.Pos = new int[] {posX, posY};
+        chess.Pos = new int[] { posX, posY };
+        AudioManager.Instance.SoundPlay("OnMove");
+
         bool isOver = CheckGameOver();
 
         if (!isOver)
@@ -130,8 +153,9 @@ public class GamePlayManager : MonoSingletion<GamePlayManager>
     {
         Forbid fb = GameObjectPoolManager.Instance.Pool_ForbidPool.AllocateGameObject<Forbid>(transform);
         fb.transform.position = new Vector3((posX - 3) * 1.5f, (posY - 3) * 1.5f, -0.5f);
-        fb.Pos = new int[] {posX, posY};
+        fb.Pos = new int[] { posX, posY };
         forbidArr[posX, posY] = fb;
+        AudioManager.Instance.SoundPlay("OnForbid");
     }
 
     private void RemoveForbid(int posX, int posY)

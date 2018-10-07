@@ -61,7 +61,6 @@ public class GameManager : MonoSingletion<GameManager>
     {
         GameState = GameStates.GameOver;
         GameOverCanvas.SetActive(true);
-        Time.timeScale = 0;
         if (PlayerAWin)
         {
             GameOverText.text = "Player A Wins!";
@@ -75,7 +74,6 @@ public class GameManager : MonoSingletion<GameManager>
     public void NewGame()
     {
         GameState = GameStates.Playing;
-        Time.timeScale = 1f;
         GameStartCanvas.SetActive(false);
         PlayerA.SetActive(true);
         PlayerB.SetActive(false);
@@ -83,7 +81,6 @@ public class GameManager : MonoSingletion<GameManager>
 
     public void ClearGame()
     {
-        Time.timeScale = 0;
         GamePlayManager.Instance.ResetGameBoard();
     }
 
@@ -98,14 +95,12 @@ public class GameManager : MonoSingletion<GameManager>
     private void Pause()
     {
         GameState = GameStates.Pause;
-        Time.timeScale = 0;
         GamePauseCanvas.SetActive(true);
     }
 
     public void Resume()
     {
         GameState = GameStates.Playing;
-        Time.timeScale = 1f;
         GamePauseCanvas.SetActive(false);
     }
 
