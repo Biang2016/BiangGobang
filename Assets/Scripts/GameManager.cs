@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
-using UnityEngine.Experimental.UIElements;
 using UnityEngine.UI;
 
 public class GameManager : MonoSingletion<GameManager>
 {
     public int GameWinChessNum = 5;
-
 
     void Awake()
     {
@@ -24,7 +22,7 @@ public class GameManager : MonoSingletion<GameManager>
         {
             if (GameState == GameStates.Playing)
                 Pause();
-            else if(GameState == GameStates.Pause)
+            else if (GameState == GameStates.Pause)
                 Resume();
         }
     }
@@ -110,6 +108,4 @@ public class GameManager : MonoSingletion<GameManager>
     }
 
     #endregion
-
 }
-
